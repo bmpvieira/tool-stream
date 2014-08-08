@@ -21,7 +21,7 @@ If you're using ```tool-stream``` with Node.js, you can require the module:
 var tool = require('tool-stream')
 ```
 
-Please read the [documentation](http://rawgit.com//bmpvieira/tool-stream/master/docs/bionode.html) for the methods exposed by ```tool-stream```.
+Please read the [documentation](https://rawgit.com/bmpvieira/tool-stream/master/docs/tool-stream.html) for the methods exposed by ```tool-stream```.
 
 
 Contributing
