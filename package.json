@@ -1,7 +1,7 @@
 {
   "name": "tool-stream",
   "description": "Node.js module for working with Streams of objects.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "http://github.com/bmpvieira/tool-stream",
   "repository": {
     "type": "git",
