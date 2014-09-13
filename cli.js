@@ -13,5 +13,7 @@ process.stdin.setEncoding('utf8')
 process.stdin
 .pipe(split())
 .pipe(operation)
-.on('data', console.log)
+.on('data', function(data) {
+  console.log(JSON.stringify(data))
+})
 .on('error', console.log)
