@@ -9,11 +9,27 @@ var method = argv._[0]
 var params = argv._.slice(1)
 
 var operation = tool[method].apply(this, params)
-process.stdin.setEncoding('utf8')
-process.stdin
-.pipe(split())
-.pipe(operation)
-.on('data', function(data) {
-  console.log(JSON.stringify(data))
-})
-.on('error', console.log)
+
+process.stdin.setEncoding('utf8');
+
+if (!process.stdin.isTTY) {
+  process.stdin
+  .pipe(split())
+  .pipe(JSONparse())
+  .pipe(operation)
+  .on('data', function(data) {
+    console.log(JSON.stringify(data))
+  })
+  .on('error', console.log)
+}
+
+function JSONparse() {
+  var stream = through.obj(transform)
+  return stream
+  function transform(obj, enc, next) {
+    try { obj = JSON.parse(obj) }
+    catch(e) {}
+    if (obj !== '') { this.push(obj) }
+    next()
+  }
+}
