@@ -18,7 +18,10 @@ if (!process.stdin.isTTY) {
   .pipe(JSONparse())
   .pipe(operation)
   .on('data', function(data) {
-    console.log(JSON.stringify(data))
+    if (typeof data === 'object') {
+      data = JSON.stringify(data)
+    }
+    console.log(data)
   })
   .on('error', console.log)
 }
